@@ -120,8 +120,16 @@ Route::get('/newuserform', function(){
     return view ('newuserform');
 });
 
-Route::view('/newuserform', 'newuserform');
+Route::view('/loginform', 'loginform');
 
 use App\Http\Controllers\newUserController;
 Route::post('/newUserController', [newUserController::class, 'account']);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

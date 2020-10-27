@@ -22,7 +22,7 @@
         @endif --}}
         <form action="usercontroller" method="post">
             {{ csrf_field() }}
-            <input type="email" name="email" placeholder="@" autofocus>
+            <input type="text" name="email" placeholder="@" autofocus>
             @error('email')
                 <span>{{$message}}</span>                
             @enderror
