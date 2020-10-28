@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::get('/cdv',function(){
     //return view('cdv');
     //return 'cdv';
@@ -122,8 +124,8 @@ Route::get('/newuserform', function(){
 
 Route::view('/loginform', 'loginform');
 
-use App\Http\Controllers\newUserController;
-Route::post('/newUserController', [newUserController::class, 'account']);
+use App\Http\Controllers\loginUserController;
+Route::post('/newUserController', [loginUserController::class, 'account']);
 
 
 Auth::routes();
