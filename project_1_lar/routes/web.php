@@ -135,3 +135,25 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Api
+Route::get('data', [App\Http\Controllers\Data::class, 'list']);
+
+//middleware
+Route::get('json', function(){
+    echo 'isJson';
+})->middleware('isJson');
+
+Route::view('login', 'login');
+
+Route::post('login', [App\Http\Controllers\Login::class, 'index']);
+
+Route::view('profile', 'profile');
+
+
+Route::view('kursywalut','kursywalut');
+
+Route::get('kursywalut', [App\Http\Controllers\kursywalut::class, 'list'])->name('list');
+
+Route::view('kalkulatorwalut','kalkulatorwalut');
+
+Route::post('kalkulatorwalut',[App\Http\Controllers\kalkulatorwalut::class,'index']);
