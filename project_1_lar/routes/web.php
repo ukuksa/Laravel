@@ -19,11 +19,11 @@ Route::get('/', function () {
 
 
 
-Route::get('/cdv',function(){
+Route::get('/cdvv',function(){
     //return view('cdv');
     //return 'cdv';
 
-    return view('cdv', ['name' => 'Anna', 'surname' => 'Kowalska']);
+    return view('cdvv', ['name' => 'Anna', 'surname' => 'Kowalska']);
 });
 
 
@@ -157,3 +157,26 @@ Route::get('kursywalut', [App\Http\Controllers\kursywalut::class, 'list'])->name
 Route::view('kalkulatorwalut','kalkulatorwalut');
 
 Route::post('kalkulatorwalut',[App\Http\Controllers\kalkulatorwalut::class,'index']);
+
+Route::view('profile', 'profile');
+
+Route::get('profile/{lang}', function ($lang) {
+    
+    App::setLocale($lang);
+    return view('profile');
+
+});
+
+Route::get('/cdv', [App\Http\Controllers\cdv::class, 'show']);
+
+Route::view('form', 'form');
+
+Route::get('/send', function(){
+    $details = [
+        'title' => 'CDV - email',
+        'body' => 'Wiadomosc testowa',
+    ];
+
+    \Mail::to('ukuksa@edu.cdv.pl')->send(new \App\Mail\TestMail($details));
+    echo 'Wiadomosc wyslana pomyslnie';
+});
